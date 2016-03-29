@@ -2,6 +2,10 @@
 error_reporting(E_ALL & ~E_NOTICE);
 //session_start();
 
+if(!empty($_GET['message'])) {
+    $message = $_GET['message'];
+	echo $message;
+}
 if(isset($_POST['submit'])){
 	include_once("connection.php");
 	$uname = strip_tags($_POST['username']);
@@ -24,6 +28,7 @@ if(isset($_POST['submit'])){
 		echo "Incorrect name and password";
 	}
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +38,7 @@ if(isset($_POST['submit'])){
 		form{
 			margin: auto;
 			width: 60%;
-			border: 3px solid #73AD21;
+			border: 3px solid teal;
 			padding: 10px;
 		}
 		#text{
@@ -41,7 +46,7 @@ if(isset($_POST['submit'])){
 			text-align: center;
 		}
 		body{
-			background-color:grey;
+			background-color:tan;
 		}
 	</style>
 </head>
