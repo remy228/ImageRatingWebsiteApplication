@@ -1,0 +1,18 @@
+		div.float{
+			display: inline-block;
+			width: 60px;	
+			padding: 10px;
+		}
+		div.head{
+			width: 200px;
+		}
+		div.sign{
+			
+			float: right;
+			
+		}
+		body{
+			background-color: tan;
+		}
+		
+	

@@ -1,11 +1,11 @@
 <?php
 
 require("Config.php");
-
 session_start();
 if($_SESSION['logged'] === true) {
 
    $user = $_SESSION["username"];
+    
    echo $user;
 }
 
@@ -63,6 +63,7 @@ $new_Height= (500 * $Original_Height)/($Original_Width);
         echo $_POST["caption"];
         list($t,$image) = split('/',$target_file);
            $_SESSION["image"]=$image;
+		   
 
 $rsr_org = imagecreatefromjpeg("./$target_file");
 $rsr_scl = imagescale($rsr_org, 500, $new_Height);
@@ -79,10 +80,14 @@ if ($conn->connect_error ) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$insertion= "INSERT INTO images VALUES ('$user' , '$image')";
+// TIMESTAMP (NEW)
+
+$currTime=$_SERVER['REQUEST_TIME'];
+$caption=$_POST["caption"];
+$insertion= "INSERT INTO images VALUES ('$user' , '$image', '$caption', '$currTime')";
 if ( $conn->query($dbused) === TRUE && $conn->query($insertion) === TRUE ) {
     echo "Successfully inserted";
-    header('Location: rating.php');
+    header('Location: index2.php');
 } 
 else {
     echo "Error: " . $conn->error;
@@ -101,6 +106,7 @@ else {
 
 
 
+//include(rating.php);
 //$conn->close();
 
 ?>

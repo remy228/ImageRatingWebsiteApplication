@@ -18,14 +18,14 @@ if(isset($_POST['submit'])){
 	
 	if($query){
 		$result = mysqli_fetch_row($query);
-		$user = $result[0];
+		$user = $result[1];
 		$password = $result[2];
 	}
 	if($user == $uname && $pwd == $password){
 		$_SESSION['logged'] = true;
 		$_SESSION['username']= $uname;
 		
-		header('Location: image_upload_htmlform.html');
+		header('Location: index2.php');
 	}
 	else{
 		echo "Incorrect name and password";

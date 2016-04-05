@@ -18,7 +18,7 @@ $sql = "CREATE DATABASE $DB_NAME";
 $dbused= "USE $DB_NAME";
 $user = "CREATE TABLE user(name varchar(20), uname varchar(10) primary key, password varchar(10))";
 $image = "CREATE TABLE rating(uname varchar(10) unique , image varchar(10), rating int(1))";
-$userimage= "CREATE TABLE images(uname varchar(10), image varchar(10))";
+$userimage= "CREATE TABLE images(uname varchar(10), image varchar(10), caption varchar(20), timstamp int(40))";
 
 if ($conn->query($sql) === TRUE AND $conn->query($dbused) === TRUE AND $conn->query($user) === TRUE AND $conn->query($image) === TRUE AND $conn->query($userimage) === TRUE) {
     echo "Successfully created";
