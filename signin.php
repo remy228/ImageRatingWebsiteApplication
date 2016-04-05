@@ -1,17 +1,19 @@
 <?php
-error_reporting(E_ALL & ~E_NOTICE);
-//session_start();
 
+error_reporting(E_ALL & ~E_NOTICE);
+session_start();
+$nameErr ="";
 if(!empty($_GET['message'])) {
     $message = $_GET['message'];
 	echo $message;
 }
 if(isset($_POST['submit'])){
+	
 	include_once("connection.php");
 	$uname = strip_tags($_POST['username']);
 	$pwd = strip_tags($_POST['password']);
 	
-	$sql = "SELECT username, name, password FROM members WHERE username='$uname' AND password='$pwd'";
+	$sql = "SELECT name, uname, password FROM user WHERE uname='$uname' AND password='$pwd'";
 	$query = mysqli_query($db, $sql);
 	
 	if($query){
@@ -20,9 +22,10 @@ if(isset($_POST['submit'])){
 		$password = $result[2];
 	}
 	if($user == $uname && $pwd == $password){
-		//$_SESSION['username']= $uname;
+		$_SESSION['logged'] = true;
+		$_SESSION['username']= $uname;
 		
-		header('Location: user.php');
+		header('Location: image_upload_htmlform.html');
 	}
 	else{
 		echo "Incorrect name and password";

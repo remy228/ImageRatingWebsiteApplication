@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- Drop down menu for selection of user's rating-->
+<html>
+	<head>
+		<title>User Rating</title>
+		<link rel = "stylesheet" href="site.css">
+		<meta http-equiv="refresh" content="20">
+	</head>
+	<body>
+	<h1> Web-Site Analytics </h1> 
+	
+	<form name ="analytics" method="post" action = "index.php">
+	<label for ="select">Select a time-period</label>
+	<select name = "event" id="select"> 
+		<option value = "10"  > Last 10 Seconds </option>
+		<option value = "60"  > Last Minute </option>
+		<option value = "360" > Last Hour </option>
+		<option value = "All" > All Time </option>
+	</select>
+	<input name="Go" type="submit" value="Go">
+
+	<br>
+	<br>
+	<br>
+</html>
