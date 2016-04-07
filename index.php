@@ -16,7 +16,15 @@
 		<a href="register.php"><u>Register</u></a>
 	</div>
 	<h2>Recent</h2>
+	<?php
+		include "recent.php"
+	?>
 	<h2>Popularity</h2>
+	<?php
+		include "popularity_unsigned.php";
+		popularity_unsigned::popular();
+		
+	?>
 	
 </body>
 </html>

@@ -36,6 +36,9 @@ if(isset($_POST['submit'])){
 
 <!DOCTYPE html>
 <head>
+	<link rel="icon" href="logofavicon.ico">
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+	
 	<title>Login</title>
 	<style>
 		form{
