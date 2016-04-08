@@ -1,13 +1,13 @@
 
 
 <?php
+include_once "details.php";
 //require_once("model.php");
 if (!isset($_SESSION)) { session_start(); }
 if($_SESSION['logged'] === true) {
 
    $user = $_SESSION["username"];
   // $img=$_SESSION["image"];
-  
 }
 error_reporting(E_ALL & ~E_NOTICE);
 require_once("Config.php");
@@ -28,6 +28,12 @@ include "Connection.php";
 	//if you press submit
 	if(isset($_POST['submit']))
 	{
+		//Add Jay
+		//include_once "details.php";
+		$details = new Details();
+		$details->details();
+		
+		
 	    $im=$_POST['result'];
 
             // Check connection
@@ -50,28 +56,28 @@ include "Connection.php";
 	 if($y==0)
 	 {   
 	    
-	    
+			
 		if(isset($_POST['rating'])){
-		    $rating = $_POST['rating'];
-		    }
-		          if (isset($im))
-		          {
-			$insert= "INSERT INTO rating values('$user','$im','$rating')";
+			$rating = $_POST['rating'];
 			}
-	if(mysqli_query($db, $insert) === TRUE)
-	{
-		echo "Inserted";
-		header("Location: index2.php");
-	}
-	else
-	{
-		echo "You already rated";
-		header("Location: index2.php");
-	}
+			  if (isset($im))
+			  {
+				$insert= "INSERT INTO rating values('$user','$im','$rating')";
+				}
+		if(mysqli_query($db, $insert) === TRUE)
+		{
+			echo "Inserted";
+			header("Location: index2.php");
+		}
+		else
+		{
+			echo "You already rated";
+			header("Location: index2.php");
+		}
 		
 	}
 	else
-	{	//Add Jay
+	{	
 	    header('Location: index2.php?message=Oops you cannot rate this image twice');
 		
 	    }

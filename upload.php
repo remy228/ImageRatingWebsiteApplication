@@ -36,8 +36,8 @@ function uploading()
 
     // Checking if file already exists
     if (file_exists($target_file)) 
-    {
-        echo "File already exists ";
+    {	//Add Jay
+        echo header("Location:index2.php?message=File already exists. Make sure you upload another image or rename the image. ");
         $flag = 0;
     }
 
@@ -52,8 +52,8 @@ function uploading()
 
     //final upload if all the restrictions have been passed.
     if ($flag == 0) 
-    {
-        echo "Image was not uploaded.";
+    {	//Add Jay
+        echo "\n Image was not uploaded. Please try again";
     } 
     else 
     {
@@ -90,20 +90,23 @@ function uploading()
     
             $currTime=$_SERVER['REQUEST_TIME'];
             $caption=$_POST["caption"];
-            $insertion= "INSERT INTO images VALUES ('$user' , '$image', '$caption', '$currTime')";
+            
+			date_default_timezone_set('America/Los_Angeles');
+			$date = date('m/d/Y h:i:s a', time());
+			$insertion= "INSERT INTO images VALUES ('$user' , '$image', '$caption', '$currTime', '$date')";
                 if ( $conn->query($dbused) === TRUE && $conn->query($insertion) === TRUE )
                 {	
+					$insert = "INSERT into average values('$image', 0)";
+					$initial = $conn->query($insert);
+
+
 					//$_SESSION["image"] = $image;
                     header('Location: index2.php?message=You have successfully uploaded image');
                 } 
                 else 
                 {
                     echo "Error: " . $conn->error;
-                }
-    
-
-
-        
+                }           
         }     
         else 
         {
