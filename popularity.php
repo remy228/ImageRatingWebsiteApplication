@@ -2,6 +2,7 @@
 <head></head>
 <body>
 <?php
+global $img1;
 class popularity
 {
     
@@ -39,27 +40,11 @@ class popularity
                    	$row = mysqli_fetch_array($result);
                    	//print $row[0].$row["image"]. "<br />";
                    	echo '<img src="./resources/'.$row["image"].'" alt="Cover">';
-                   	//include "rating.php";
-					echo '<!DOCTYPE html>
-						<html>
-						<body>
-
-						<form method = "POST" action="rating.php">
-						<select name="rating">
-						  <option value="1">1</option>
-						  <option value="2">2</option>
-						  <option value="3">3</option>
-						  <option value="4">4</option>
-						  <option value="5">5</option>
-						</select>
-						<input type="submit" name="submit"  value="Submit">
-
-						</form>
-						<p>Choose a rating.</p>
-						</body>
-						</html>';
-						$_SESSION["image"]= $row["image"];
-						include_once('rating.php');
+                   	$img1=$row["image"];
+                   	
+                   	include "rating_form.html";
+                   	
+                   	include "rating.php";
                    	array_push($duplicate,$row["image"]);
 
                 }
@@ -76,27 +61,11 @@ class popularity
                         {
                    	//print $row[0].$row["image"]. "<br />";
                    	echo '<img src="./resources/'.$row2["image"].'" alt="Cover">';
-echo '<!DOCTYPE html>
-<html>
-<body>
+                   	 $img1=$row2["image"];
 
-<form method = "POST" action="rating.php">
-<select name="rating">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-</select>
-<input type="submit" name="submit"  value="Submit">
+                   	include "rating_form.html";
+                   	include "rating.php";
 
-</form>
-<p>Choose a rating.</p>
-</body>
-</html>';
-$_SESSION["image"]= $row2["image"];
-include_once('rating.php');
-                   	//include "rating.php";
                    	}
 
                 }
@@ -117,27 +86,11 @@ include_once('rating.php');
                    	$row2 = mysqli_fetch_array($result2);
                    	//print $row[0].$row["image"]. "<br />";
                    	echo '<img src="./resources/'.$row2["image"].'" alt="Cover">';
-					echo '<!DOCTYPE html>
-<html>
-<body>
+                   	 $img1=$row2["image"];
 
-<form method = "POST" action="rating.php">
-<select name="rating">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-</select>
-<input type="submit" name="submit"  value="Submit">
+                   	include "rating_form.html";
+                   	include "rating.php";
 
-</form>
-<p>Choose a rating.</p>
-</body>
-</html>';
-$_SESSION["image"]= $row2["image"];
-include_once('rating.php');
-                   	//include "rating.php";
                    	}
 
                     }
@@ -152,27 +105,11 @@ include_once('rating.php');
                    	$row = mysqli_fetch_array($result);
                    	//print $row[0].$row["image"]. "<br />";
                    	echo '<img src="./resources/'.$row["image"].'" alt="Cover">';
-					echo '<!DOCTYPE html>
-<html>
-<body>
+                   	 $img1=$row["image"];
 
-<form method = "POST" action="rating.php">
-<select name="rating">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-</select>
-<input type="submit" name="submit"  value="Submit">
+                   	include "rating_form.html";
+                   	include "rating.php";
 
-</form>
-<p>Choose a rating.</p>
-</body>
-</html>';
-$_SESSION["image"]= $row["image"];
-include_once('rating.php');
-                   	//include "rating.php";
    	
                 }
     
@@ -180,8 +117,7 @@ include_once('rating.php');
         } // end of method popular
 }//end of class popularity
 
-$a = new popularity();
-//$a->popular();
+
 ?>
 
 </body>
